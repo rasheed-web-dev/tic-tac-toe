@@ -5,7 +5,7 @@ const board = (() => {
     const setCell = function(index, value) {
         cells[index] = value;
     };
-    const get = () => {return cells;};
+    const get = () => {return [...cells];};
     const reset = () => {cells.fill('');}
     return {
         getCell, setCell, get, reset
