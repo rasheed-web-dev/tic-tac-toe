@@ -12,3 +12,19 @@ const board = (() => {
     };
 })();
 
+const createPlayer = (value) => {
+    let score = 0;
+    const incrementScore = () => {
+        score++;
+    };
+    const getScore = () => {
+        return score;
+    }
+    const getValue = () => {
+        return value;
+    }
+    return {
+        getValue, incrementScore, getScore
+    }
+}
+
