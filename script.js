@@ -50,8 +50,15 @@ const Board = (() => {
         return false;
     }
 
+    const checkTie = () => {
+        if (cells.includes('')) {
+            return false;
+        }
+        return true;
+    }
+
     return {
-        getCell, setCell, get, reset, checkWin
+        getCell, setCell, get, reset, checkWin, checkTie
     };
 })();
 
