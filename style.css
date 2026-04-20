@@ -47,3 +47,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*------- Start of Styles -------*/
+
+body {
+  background-color: rgb(202, 214, 226);
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-container {
+  height: 600px;
+  width: 600px;
+  background-color: rgb(244, 250, 255);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.cell {
+  background-color: rgb(202, 214, 226);
+  border-radius: 10px;
+  margin: 10px;
+}

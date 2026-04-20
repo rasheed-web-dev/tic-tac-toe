@@ -84,7 +84,7 @@ const playRound = (() => {
     let player2 = createPlayer('O');
 
     while (true) {
-        Board.setCell(parseInt(prompt('')), player1.getValue());
+        Board.setCell(2, player1.getValue());
         console.log(Board.get());
         if (Board.checkWin()) {
             player1.incrementScore();
@@ -96,7 +96,7 @@ const playRound = (() => {
             return;
         }
 
-        Board.setCell(parseInt(prompt('')), player2.getValue());
+        Board.setCell(1, player2.getValue());
         console.log(Board.get());
         if (Board.checkWin()) {
             player2.incrementScore();
@@ -108,4 +108,4 @@ const playRound = (() => {
             return;
         }
     }
-})();
+});
