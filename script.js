@@ -77,35 +77,3 @@ const createPlayer = (value) => {
         getValue, incrementScore, getScore
     }
 }
-
-const playRound = (() => {
-    Board.reset();
-    let player1 = createPlayer('X');
-    let player2 = createPlayer('O');
-
-    while (true) {
-        Board.setCell(2, player1.getValue());
-        console.log(Board.get());
-        if (Board.checkWin()) {
-            player1.incrementScore();
-            console.log('you win');
-            return;
-        }
-        if (Board.checkTie()) {
-            console.log('tie')
-            return;
-        }
-
-        Board.setCell(1, player2.getValue());
-        console.log(Board.get());
-        if (Board.checkWin()) {
-            player2.incrementScore();
-            console.log('you win 2');
-            return;
-        }
-        if (Board.checkTie()) {
-            console.log('tie')
-            return;
-        }
-    }
-});
