@@ -77,3 +77,16 @@ const createPlayer = (value) => {
         getValue, incrementScore, getScore
     }
 }
+
+
+const GameBoard = (() => {
+
+})();
+
+const GameController = (() => {
+
+})();
+
+const DisplayController = (() => {
+
+})();
