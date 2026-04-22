@@ -88,5 +88,23 @@ const GameController = (() => {
 })();
 
 const DisplayController = (() => {
+    const boardDiv = document.querySelector('.grid-container');
+    const refresh = () => {
+        boardDiv.innerHTML = "";
+        let index = 0;
+        for (let cell of Board.get()) {
+            let cellDiv = document.createElement('div');
+            cellDiv.classList.add('cell');
+            cellDiv.innerText = cell;
+            cellDiv.dataset.index = index;
+            index++;
+            boardDiv.appendChild(cellDiv);
+        }
+    }
 
+    return {
+        refresh,
+    }
 })();
+
+DisplayController.refresh();
