@@ -84,7 +84,13 @@ const GameBoard = (() => {
 })();
 
 const GameController = (() => {
+    const playTurn = (index) => {
+        console.log(index);
+    }
 
+    return {
+        playTurn,
+    }
 })();
 
 const DisplayController = (() => {
@@ -97,6 +103,9 @@ const DisplayController = (() => {
             cellDiv.classList.add('cell');
             cellDiv.innerText = cell;
             cellDiv.dataset.index = index;
+            cellDiv.addEventListener('click', () => {
+                GameController.playTurn(cellDiv.dataset.index)
+            });
             index++;
             boardDiv.appendChild(cellDiv);
         }
