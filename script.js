@@ -84,8 +84,16 @@ const GameBoard = (() => {
 })();
 
 const GameController = (() => {
+    player1 = createPlayer('X');
+    player2 = createPlayer('O');
+    let currentTurn;
     const playTurn = (index) => {
-        console.log(index);
+        if (Board.getCell(index) != '') {
+            return;
+        }
+        currentTurn = currentTurn == player1.getValue() ? player2.getValue() : player1.getValue();
+        Board.setCell(index, currentTurn);
+        DisplayController.refresh();
     }
 
     return {
