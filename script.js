@@ -78,22 +78,27 @@ const createPlayer = (value) => {
     }
 }
 
-
-const GameBoard = (() => {
-
-})();
-
 const GameController = (() => {
     player1 = createPlayer('X');
     player2 = createPlayer('O');
-    let currentTurn;
+    let currentPlayer;
     const playTurn = (index) => {
         if (Board.getCell(index) != '') {
             return;
         }
-        currentTurn = currentTurn == player1.getValue() ? player2.getValue() : player1.getValue();
-        Board.setCell(index, currentTurn);
+        currentPlayer = currentPlayer == player1 ? player2 : player1;
+        Board.setCell(index, currentPlayer.getValue());
         DisplayController.refresh();
+        if (Board.checkWin()) {
+            currentPlayer.incrementScore();
+            console.log(`${currentPlayer.getValue()} Wins!`);
+            console.log(`${currentPlayer.getScore()}`);
+            Board.reset()
+        }
+        else if (Board.checkTie()) {
+            console.log(`It's a Tie.`)
+            Board.reset()
+        }
     }
 
     return {
