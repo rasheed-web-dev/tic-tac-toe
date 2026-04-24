@@ -104,6 +104,7 @@ const GameController = (() => {
     }
 
     const endRound = () => {
+        DisplayController.displayScores(player1.getScore(), player2.getScore());
         const againBtn = document.querySelector('.again-btn');
         againBtn.disabled = false;
         againBtn.addEventListener('click', () => {
@@ -137,8 +138,15 @@ const DisplayController = (() => {
         }
     }
 
+    const displayScores = (score1, score2) => {
+        const player1ScoreDiv = document.querySelector('.player1-score p');
+        const player2ScoreDiv = document.querySelector('.player2-score p');
+        player1ScoreDiv.innerText = score1;
+        player2ScoreDiv.innerText = score2;
+    }
+
     return {
-        refresh,
+        refresh, displayScores
     }
 })();
 
