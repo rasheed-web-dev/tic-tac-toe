@@ -83,7 +83,7 @@ const GameController = (() => {
     player2 = createPlayer('O');
     let currentPlayer;
     const playTurn = (index) => {
-        if (Board.getCell(index) != '') {
+        if (Board.getCell(index) != '' || currentPlayer == 'end') {
             return;
         }
         currentPlayer = currentPlayer == player1 ? player2 : player1;
@@ -93,16 +93,29 @@ const GameController = (() => {
             currentPlayer.incrementScore();
             console.log(`${currentPlayer.getValue()} Wins!`);
             console.log(`${currentPlayer.getScore()}`);
-            Board.reset()
+            currentPlayer = 'end';
+            GameController.endRound();
         }
         else if (Board.checkTie()) {
             console.log(`It's a Tie.`)
-            Board.reset()
+            currentPlayer = 'end';
+            GameController.endRound();
         }
     }
 
+    const endRound = () => {
+        const againBtn = document.querySelector('.again-btn');
+        againBtn.disabled = false;
+        againBtn.addEventListener('click', () => {
+            currentPlayer = '';
+            Board.reset();
+            DisplayController.refresh();
+            againBtn.disabled = true;
+        })
+    }
+
     return {
-        playTurn,
+        playTurn, endRound
     }
 })();
 
